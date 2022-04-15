@@ -1,0 +1,738 @@
+//<МИКСИНЫ>===============================================================================================
+@import "mixins.scss";
+//</МИКСИНЫ>===============================================================================================
+
+//<ШРИФТЫ>===============================================================================================
+
+//<Подключаем шрифты>=======================================================================================
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,300;1,400;1,700&display=swap');
+//</Подключаем шрифты>=======================================================================================
+
+//<Иконочные шрифты>==========================================================================================
+
+//</Иконочные шрифты>==========================================================================================
+
+//<Шрифт по умолчанию>==========================================================================================
+$fontfamily: "Lato";
+//</Шрифт по умолчанию>==========================================================================================
+
+//</ШРИФТЫ>=======================================================================================================
+
+//<ПЕРЕМЕННЫЕ>===========================================================================================================
+$minwidth: 320px;
+$mw: 1170;
+$md1: $mw+12;
+$md2: 991.98;
+$md3: 767.98;
+$md4: 479.98;
+//</ПЕРЕМЕННЫЕ>===========================================================================================================
+
+//<ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>===============================================================================================
+@import "null.scss";
+
+body {
+	color: #000;
+	font-size: 14px;
+
+	&.lock {
+		overflow: hidden;
+	}
+}
+
+//</ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>===============================================================================================
+
+//<ОБОЛОЧКА>===========================================================================================================
+.wrapper {
+	width: 100%;
+	min-height: 100%;
+	overflow: hidden;
+
+	&.loaded {}
+}
+
+//</ОБОЛОЧКА>===========================================================================================================
+
+//<ОСНОВНАЯ СЕТКА>===========================================================================================================
+.container {
+	max-width: $mw + px;
+	margin: 0 auto;
+	width: 100%;
+
+	@media (max-width:$md1+px) {
+		max-width: 970px;
+	}
+
+	@media (max-width: $md2+px) {
+		max-width: 750px;
+	}
+
+	@media (max-width: $md3+px) {
+		max-width: none;
+		padding: 0 15px;
+	}
+}
+
+//</ОСНОВНАЯ СЕТКА>===========================================================================================================
+
+//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>====================================================================================================
+@import "forms.scss";
+@import "ui.scss";
+//</ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>====================================================================================================
+
+//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
+//@import "../../js/fancybox/jquery.fancybox.scss";
+//@import "datepicker.scss";
+//@import "fontawesome.scss";
+//@import "popover.min.scss";
+//@import "baguetteBox.scss";
+//@import "pagging.scss";
+//@import "icons.scss";
+@import "popup.scss";
+@import "header.scss";
+@import "footer.scss";
+@import "home.scss";
+//</ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
+
+//<ОСНОВНОЙ БЛОК>====================================================================================================
+
+.content {
+	margin: 0 auto;
+}
+
+
+.page {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	right: 0;
+	@include flexbox();
+	flex-direction: column;
+
+}
+
+.main-screen {
+	flex: 1 0 100%;
+	position: relative;
+
+	&__bg {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		right: 0;
+	}
+}
+
+
+.generation {
+	&__block {
+		padding: 120px 0;
+		background-color: #f7f7f7;
+		text-align: center;
+
+		@media (max-width: 900px) {
+			padding: 80px 0;
+		}
+
+		@media (max-width: 600px) {
+			padding: 30px 0;
+		}
+	}
+}
+
+
+.block {
+	background-color: #f7f7f7;
+	text-align: center;
+
+	&__icon {
+		margin: 0px 0px 33px 0px;
+	}
+
+	&__title {
+		font-size: 18px;
+		line-height: 24px;
+		font-weight: 700;
+		letter-spacing: 0.2em;
+		color: #353738;
+		margin: 0px 0px 18px 0px;
+		text-transform: uppercase;
+	}
+
+	&__text {
+		font-size: 18px;
+		line-height: 34px;
+		font-weight: 400;
+		color: #848789;
+
+		&_j {
+			text-align: justify;
+			font-size: 16px;
+			line-height: 30px;
+
+
+			&:after {
+				display: block;
+				margin: 35px auto 0 auto;
+				content: '';
+				width: 50px;
+				height: 1px;
+				background-color: rgba(53, 55, 56, 0.2);
+
+				@media (max-width: 1500px) {
+					margin: 15px auto 0 auto;
+				}
+
+			}
+		}
+	}
+}
+
+
+
+
+.brands {
+
+	&_rev {
+		.brands__column {
+			@include flexorder(1);
+
+			&_b {
+				@include flexorder(2);
+
+			}
+		}
+
+	}
+
+
+	&__row {
+		@include flexbox();
+
+	}
+
+	&_last {
+		&__column {
+			flex: 0 1 33.333%;
+		}
+	}
+
+
+
+	&__column {
+
+		flex: 0 1 33.333%;
+
+		&_b {
+			flex: 0 1 66.667%;
+		}
+	}
+
+	/* .brands__item */
+
+
+	/* .brands__content */
+
+	&__content {
+		padding: 70px 65px 55px 65px;
+		position: relative;
+
+		&:after {
+			content: '';
+			position: absolute;
+			bottom: -10px;
+			left: 50%;
+			margin: 0 0 0 -10px;
+			width: 0;
+			height: 0;
+			border-left: 10px solid transparent;
+			border-right: 10px solid transparent;
+			border-top: 10px solid #fff;
+			z-index: 50;
+
+		}
+	}
+
+	/* .brands__image */
+
+	&__image {
+		padding: 0 0 37.51% 0;
+	}
+
+	@media (max-width: 1500px) {
+		&__content {
+			padding: 40px 25px 35px 25px;
+		}
+	}
+
+	@media (max-width: 1100px) {
+		&_last {
+			.brands__column {
+				&:nth-child(1) {
+					@include flexorder(2)
+				}
+
+				&:nth-child(2) {
+					@include flexorder(1)
+				}
+
+				&:nth-child(3) {
+					@include flexorder(3)
+				}
+			}
+		}
+
+		&__row {
+			flex-direction: column;
+
+		}
+	}
+}
+
+
+.item {
+	height: 100%;
+	display: block;
+	position: relative;
+
+	/* .item__logo */
+
+	&__logo {
+		display: flex;
+		flex-direction: column;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		z-index: 2;
+		opacity: 0;
+		visibility: hidden;
+		@include anim(0.3s, 0s);
+		background-color: rgba(107, 177, 150, 0.5);
+
+		span {
+			margin-top: 15px;
+			font-family: Lato;
+			font-size: 14px;
+			line-height: 1.2;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.2em;
+			color: #ffffff;
+		}
+	}
+
+	&:hover {
+		.item__logo {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+
+	@media (max-width: 1100px) {
+		height: auto;
+		padding: 0px 0px 70% 0px;
+	}
+
+
+
+	/* .item__image */
+
+	&__image {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+	}
+}
+
+
+.slider {
+	text-align: center;
+	padding: 120px 0px 60px 0px;
+	background-color: #f7f7f7;
+
+	@media (max-width: $md3+px) {
+		padding: 60px 0px 30px 0px;
+		;
+	}
+
+
+	.text-slider {
+
+		&__wrapper {}
+
+		&__slide {}
+
+		&__icon {
+			margin-bottom: 35px;
+		}
+
+		&__title {
+			margin-bottom: 20px;
+			font-size: 18px;
+			line-height: 1.2;
+			font-weight: 700;
+			letter-spacing: 0.1em;
+			color: #353738;
+
+			& span {
+				font-weight: 300;
+				color: #848789;
+			}
+		}
+
+		&__text {
+			text-align: center;
+			font-family: Lato;
+			font-size: 24px;
+			line-height: 34px;
+			font-weight: 400;
+			font-style: italic;
+			color: #848789;
+			padding-bottom: 100px;
+		}
+	}
+
+	.swiper-pagination {
+		top: 90%;
+
+		@media (max-width: $md3+px) {
+			top: 85%;
+		}
+	}
+
+
+
+
+
+	.swiper-pagination-bullet {
+		background-color: transparent;
+		border: 2px #a9afb3 solid;
+		width: 10px;
+		height: 10px;
+	}
+
+	.swiper-pagination-bullet-active {
+		background-color: #a9afb3;
+	}
+
+
+}
+
+.swiper-wrapper {
+	max-height: 100%;
+	height: 100%;
+	display: flex;
+}
+
+.swiper-container {
+	max-width: $mw + px;
+	margin: 0 auto;
+	width: 100%;
+
+	@media (max-width:$md1+px) {
+		max-width: 970px;
+	}
+
+	@media (max-width: $md2+px) {
+		max-width: 750px;
+	}
+
+	@media (max-width: $md3+px) {
+		max-width: 600px;
+		padding: 0 15px;
+	}
+
+	@media (max-width: 600px) {
+		max-width: 400px;
+		padding: 0 15px;
+	}
+
+	@media (max-width: 400px) {
+		max-width: 250px;
+		padding: 0 15px;
+	}
+}
+
+.shop {
+
+	&__body {
+		@include flexbox();
+
+
+
+	}
+
+
+	&__column {
+		flex: 0 1 16.6665%;
+
+		&_b {
+			flex: 0 1 33.333%;
+		}
+	}
+
+	&__block {}
+
+	&__footer {
+		background-color: #282f35;
+		padding: 75px 0;
+		text-align: center;
+	}
+
+	@media (max-width: 1100px) {
+		&__body {
+			flex-wrap: wrap;
+		}
+
+		&__column {
+			flex: 1 1 50%;
+
+			&_b {}
+
+			&:first-child {
+				flex: 1 1 100%;
+			}
+
+			&:last-child {
+				flex: 1 1 100%;
+			}
+		}
+
+	}
+}
+
+.footer-shop {
+
+
+
+	&__btn {
+		font-family: Lato;
+		font-size: 14px;
+		line-height: 1.2;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.2em;
+		color: #ffffff;
+		padding: 20px 50px;
+		border: #f7f7f7 solid 1px;
+
+		&:hover {
+			@include anim(0.3s, 0s);
+			background-color: #f7f7f7;
+			color: #282f35;
+		}
+	}
+}
+
+
+.btn {}
+
+.block-shop {
+	height: 100%;
+
+	&__row {
+		@include flexbox();
+
+	}
+
+	&__column {
+		flex: 0 1 50%;
+
+	}
+
+	&__item {
+		height: auto;
+		padding: 0 0 50% 0;
+
+		&_l {
+			padding: 0 0 100% 0;
+		}
+
+		&_b {
+			padding: 0 0 200.5% 0;
+		}
+	}
+}
+
+.item {
+
+
+	&__logo {}
+
+	&__image {}
+}
+
+
+
+.subscribe {
+
+	&__body {
+		padding: 110px 0;
+		max-width: 534px;
+		text-align: center;
+		margin: 0 auto;
+	}
+
+	&__logo {
+		margin-bottom: 25px;
+	}
+
+	&__label {
+		margin: 0 auto 25px auto;
+		font-family: Lato;
+		font-size: 24px;
+		line-height: 34px;
+		font-weight: 400;
+		font-style: italic;
+		color: #848789;
+	}
+
+	&__input {
+		flex: 1 1 100%;
+
+
+
+		.input {
+			border: 1px solid #d3d7d9;
+			width: 100%;
+			height: 69px;
+			padding: 0 32px;
+			font-family: Lato;
+			font-size: 20px;
+			line-height: 24px;
+			font-weight: 400;
+			font-style: italic;
+			color: #929292;
+
+			&.focus {
+				font-style: normal;
+				color: #333;
+			}
+
+			&.err {
+				border: 1px solid red;
+			}
+		}
+	}
+
+
+	&__button {}
+
+	&__btn {
+		@include anim(0.3s, 0s);
+		margin-left: 10px;
+		text-transform: uppercase;
+		font-family: Lato;
+		font-size: 24px;
+		line-height: 24px;
+		font-weight: 300;
+		color: #ffffff;
+		padding: 22.5px 40px;
+		background-color: #64c29e;
+
+		&:hover {
+			@include anim(0.3s, 0s);
+			background-color: #93ddc1;
+
+		}
+	}
+}
+
+.container {}
+
+.subsctibe {
+
+	&__form {
+		display: flex;
+
+	}
+}
+
+
+
+.footer {
+	&__row {
+		padding: 100px 0;
+		@include flexbox();
+		justify-content: space-between;
+
+		@media (max-width: 1100px) {
+			padding: 0 0 40px 0;
+
+		}
+
+		@media (max-width: 650px) {
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+		}
+	}
+
+	&__adress {
+		font-size: 13.9px;
+		font-weight: 400;
+		font-style: italic;
+		color: #848789;
+
+		& p:nth-child(1) {
+			font-style: normal;
+			font-family: Lato;
+			font-size: 16px;
+			line-height: 17px;
+			font-weight: 700;
+			color: #848789;
+		}
+
+	}
+
+	&__socials {
+		max-width: 140px;
+		margin-left: -85px;
+
+		@media (max-width: 650px) {
+			margin: 20px 0;
+			margin-left: -20px;
+		}
+
+		& a {
+			margin-left: 10px;
+		}
+	}
+
+	&__dev {}
+}
+
+.container {}
+
+.dev {
+
+	&__text {
+		position: relative;
+		top: 5px;
+		right: 7px;
+		font-family: Lato;
+		font-size: 13.9px;
+		line-height: 17px;
+		font-weight: 400;
+		font-style: italic;
+		color: #848789;
+	}
+
+	&__icon {}
+}
+
+
+
+
+//====================================================================================================
+
+//</ОСНОВНОЙ БЛОК>====================================================================================================
